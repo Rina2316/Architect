@@ -1,33 +1,36 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// others...
-	webpack(config) {
-	  // Grab the existing rule that handles SVG imports
-	  const fileLoaderRule = config.module.rules.find((rule) =>
-		 rule.test?.test?.('.svg'),
-	  );
- 
-	  config.module.rules.push(
-		 // Convert all other *.svg?icon imports to React components
-		 {
-			test: /\.svg$/i,
-			issuer: /\.[jt]sx?$/,
-			resourceQuery: /icon/, // *.svg?icon
-			use: ['@svgr/webpack'],
-		 },
-		 // Reapply the existing rule, for all other *.svg imports
-		 {
-			...fileLoaderRule,
-			test: /\.svg$/i,
-			resourceQuery: { not: /icon/ }, // exclude if *.svg?icon
-		 },
-	  );
- 
-	  // Modify the file loader rule to ignore *.svg, since we have it handled now.
-	  fileLoaderRule.exclude = /\.svg$/i;
- 
-	  return config;
-	},
- };
- 
- export default nextConfig;
+  // Разрешаем изображения с localhost и других доменов
+  images: {
+    domains: ['localhost', 'example.com'], // Добавьте сюда другие домены, если нужно
+  },
+
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.('.svg'),
+    );
+
+    config.module.rules.push(
+      // Обрабатываем *.svg?icon как React-компоненты
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: /icon/, // *.svg?icon
+        use: ['@svgr/webpack'],
+      },
+      // Применяем существующее правило ко всем остальным *.svg
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: { not: /icon/ }, // исключаем *.svg?icon
+      },
+    );
+
+    // Исключаем *.svg из старого правила
+    fileLoaderRule.exclude = /\.svg$/i;
+
+    return config;
+  },
+};
+
+export default nextConfig;
