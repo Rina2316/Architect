@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import style from "./styles/article.module.scss";
-import ImageComponent from "../../components/ImageComponent/ImageComponent";
+// import ImageComponent from "../../components/ImageComponent/ImageComponent";
 import Filter from "../../components/Filter/Filter";
 import photo from "../../icons/FirstImage.png";
 
@@ -22,7 +22,7 @@ const selectedArticle: Article = {
 const ArticlePage: React.FC = () => {
   return (
     <div>
-      <ImageComponent />
+      {/* <ImageComponent /> */}
       <Filter />
       <div className={style.mainWrapper}>
         <Image
