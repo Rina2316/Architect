@@ -17,21 +17,21 @@ const Filter: React.FC = () => {
 
   return isHomePage ? (
     <section className={styles.filter}>
-      <Link href="/article/Top%20Trends%20in%20Architectural%20Design%20for%202024" passHref>
+      <Link href="/article" passHref>
         <CustomButton variant="primary" size="m">
           Architectural Design
         </CustomButton>
       </Link>
 
       <div className={styles.tabs}>
-        <Link href="/article/Revamping%20Commercial%20Interiors:%20Modern%20Concepts" passHref>
+        <Link href="/article" passHref>
           <CustomButton variant="primary" size="m">
             Residential Interiors
           </CustomButton>
         </Link>
       </div>
 
-      <Link href="/article/Luxury%20Redefined:%20Residential%20Interiors%20in%202024" passHref>
+      <Link href="/article" passHref>
         <CustomButton variant="primary" size="m">
           Commercial Interior
         </CustomButton>

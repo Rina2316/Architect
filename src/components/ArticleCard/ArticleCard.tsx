@@ -21,7 +21,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   const { title, description } = article;
 
   return (
-    <Link href={`/article/${title}`} passHref>
+    <Link href={`/article`} passHref>
       <div className={styles.card}>
         
           <Image
