@@ -1,4 +1,4 @@
-"use client"; 
+
 import { useParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -45,6 +45,13 @@ const mockArticles: Article[] = [
     description: "Modern residential design embraces the seamless transition between indoor and outdoor spaces. Features like floor-to-ceiling glass, extended patios, and green courtyards are redefining contemporary living.",
   },
 ];
+
+// `generateStaticParams` needs to return an array of possible dynamic parameters (in this case, article titles)
+export function generateStaticParams() {
+  return mockArticles.map((article) => ({
+    title: article.title,
+  }));
+}
 
 const ArticlePage: React.FC = () => {
   const params = useParams();
