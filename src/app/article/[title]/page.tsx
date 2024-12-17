@@ -55,7 +55,6 @@ const ArticlePage: React.FC = () => {
   const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
 
   useEffect(() => {
-    // Ищем статью по названию
     const foundArticle = mockArticles.find((article) => article.title === decodedTitle);
     setCurrentArticle(foundArticle || null);
   }, [decodedTitle]);

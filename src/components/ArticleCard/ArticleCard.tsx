@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import photo from "../../icons/FirstImage.png"
 
-// Интерфейс для пропсов компонента
 interface ArticleCardProps {
   article: {
     id: number;

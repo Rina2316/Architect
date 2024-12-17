@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import styles from "./ArticleList.module.scss";
 
-// Mock data for articles
 const mockArticles = [
   {
     id: 1,
@@ -44,7 +43,7 @@ const mockArticles = [
 
 
 const ArticleList: React.FC = () => {
-  const [articles] = useState(mockArticles); // Используем моковые данные
+  const [articles] = useState(mockArticles);
 
   return (
     <div className={styles.gridContainer}>
